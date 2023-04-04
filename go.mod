@@ -1,4 +1,4 @@
-module github.com/turnage/graw
+module github.com/Marcel-ICMC/graw
 
 go 1.13
 

@@ -1,13 +1,14 @@
+// Package rsort provides tools for sorting Reddit elements.
+//
 //go:generate genny -in=thingcast.tpl -out=postcast.go gen "ThingType=*reddit.Post name=posts NAME=Post"
 //go:generate genny -in=thingcast.tpl -out=commentcast.go gen "ThingType=*reddit.Comment name=comments NAME=Comment"
 //go:generate genny -in=thingcast.tpl -out=messagecast.go gen "ThingType=*reddit.Message name=messages NAME=Message"
-// Package rsort provides tools for sorting Reddit elements.
 package rsort
 
 import (
 	"sort"
 
-	"github.com/turnage/graw/reddit"
+	"github.com/Marcel-ICMC/graw/reddit"
 )
 
 // Sorter sorts Reddit element harvests.

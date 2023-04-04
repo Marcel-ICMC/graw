@@ -4,8 +4,8 @@ import (
 	"io/ioutil"
 	"testing"
 
-	"github.com/golang/protobuf/proto"
 	"github.com/turnage/redditproto"
+	"github.com/golang/protobuf/proto"
 )
 
 func TestLoad(t *testing.T) {

@@ -3,9 +3,9 @@ package graw
 import (
 	"fmt"
 
-	"github.com/turnage/graw/botfaces"
-	"github.com/turnage/graw/reddit"
-	"github.com/turnage/graw/streams"
+	"github.com/Marcel-ICMC/graw/botfaces"
+	"github.com/Marcel-ICMC/graw/reddit"
+	"github.com/Marcel-ICMC/graw/streams"
 )
 
 var (

@@ -4,8 +4,8 @@ import (
 	"bytes"
 	"io/ioutil"
 
-	"github.com/golang/protobuf/proto"
 	"github.com/turnage/redditproto"
+	"github.com/golang/protobuf/proto"
 )
 
 // load loads the user agent and App config from an AgentFile (legacy graw 0.3.0
