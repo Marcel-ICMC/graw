@@ -59,5 +59,5 @@ func (s *scanner) ListingWithParams(path string, params map[string]string) (
 	for key, value := range params {
 		reaperParams[key] = value
 	}
-	return s.r.reap(path, reaperParams)
+	return s.r.reap_post(path, reaperParams)
 }

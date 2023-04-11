@@ -33,6 +33,10 @@ type reaper interface {
 	// reap executes a GET request to Reddit and returns the elements from
 	// the endpoint.
 	reap(path string, values map[string]string) (Harvest, error)
+
+	// executes a POST request but evaluates as a GET
+	reap_post(path string, values map[string]string) (Harvest, error)
+
 	// sow executes a POST request to Reddit.
 	sow(path string, values map[string]string) error
 	// get_sow executes a POST request to Reddit
@@ -83,6 +87,31 @@ func (r *reaperImpl) reap(path string, values map[string]string) (Harvest, error
 		Messages: messages,
 		Mores:    mores,
 	}, err
+}
+
+func (r *reaperImpl) reap_post(path string, values map[string]string) (Harvest, error) {
+	r.rateBlock()
+	values["api_type"] = "json"
+	resp, err := r.cli.Do(
+		&http.Request{
+			Method: "POST",
+			Host:   r.hostname,
+			Header: formEncoding,
+			URL:    r.url(path, values),
+		},
+	)
+
+	if err != nil {
+		return Harvest{}, err
+	}
+
+	comments, posts, messages, mores, err := r.parser.parse(resp)
+	return Harvest{
+		Comments: comments,
+		Posts:    posts,
+		Messages: messages,
+		Mores:    mores,
+	}, nil
 }
 
 func (r *reaperImpl) sow(path string, values map[string]string) error {
